@@ -1,6 +1,6 @@
 package com.olkamrr.servervisitbook.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Schedule {
@@ -12,7 +12,9 @@ public class Schedule {
     private String weekday;
     private String type;
     private String name;
-    private String teacher;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idTeacher")
+    private Teacher teacher;
     @ManyToOne(optional = false)
     @JoinColumn(name = "idGroup")
     private Group groupId;
@@ -65,11 +67,11 @@ public class Schedule {
         this.name = name;
     }
 
-    public String getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 

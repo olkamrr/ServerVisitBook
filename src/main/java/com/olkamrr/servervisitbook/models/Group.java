@@ -1,6 +1,6 @@
 package com.olkamrr.servervisitbook.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "universityGroup")

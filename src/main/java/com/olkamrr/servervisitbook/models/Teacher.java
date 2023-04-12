@@ -1,20 +1,15 @@
 package com.olkamrr.servervisitbook.models;
 
-import com.olkamrr.servervisitbook.models.Group;
 import javax.persistence.*;
 
 @Entity
-public class Student {
+public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String lastName;
     private String firstName;
     private String patronymic;
-    private boolean elder;
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "idGroup")
-    private Group groupId;
 
     public int getId() {
         return id;
@@ -48,31 +43,13 @@ public class Student {
         this.patronymic = patronymic;
     }
 
-    public boolean isElder() {
-        return elder;
-    }
-
-    public void setElder(boolean elder) {
-        this.elder = elder;
-    }
-
-    public Group getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Group groupId) {
-        this.groupId = groupId;
-    }
-
     @Override
     public String toString() {
-        return "Student{" +
+        return "Teacher{" +
                 "id=" + id +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", patronymic='" + patronymic + '\'' +
-                ", elder=" + elder +
-                ", groupId=" + groupId +
                 '}';
     }
 }

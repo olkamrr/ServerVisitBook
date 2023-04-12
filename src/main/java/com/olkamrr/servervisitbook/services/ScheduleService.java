@@ -3,6 +3,7 @@ package com.olkamrr.servervisitbook.services;
 import com.olkamrr.servervisitbook.models.Group;
 import com.olkamrr.servervisitbook.models.Schedule;
 import com.olkamrr.servervisitbook.models.Student;
+import com.olkamrr.servervisitbook.models.Teacher;
 import com.olkamrr.servervisitbook.repositories.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,13 @@ import java.util.List;
 public class ScheduleService {
     private ScheduleRepository scheduleRepository;
     private GroupService groupService;
+    private TeacherService teacherService;
 
     @Autowired
-    public ScheduleService(ScheduleRepository scheduleRepository, GroupService groupService){
+    public ScheduleService(ScheduleRepository scheduleRepository, GroupService groupService, TeacherService teacherService){
         this.scheduleRepository = scheduleRepository;
         this.groupService = groupService;
+        this.teacherService = teacherService;
     }
 
     public Schedule findOne(int id) {
