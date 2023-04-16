@@ -16,38 +16,41 @@
                     <h3 class="card-title">Учебные группы</h3>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <form method="" action="">
-                        <button class="btn btn-primary ms-2" type="submit" name="" value="">Создать</button>
-                    </form>
+                    <a class="btn btn-primary ms-2" href="/group/create">Создать</a>
                 </div>
 
             </div>
 
         </div>
     </div>
+    <#list groups as group>
     <div class="card mt-1">
         <div class="card-body">
             <div class="d-flex justify-content-between">
+
                 <div class="mx-5">
-                    <h5 class="card-title">ПРИ-119</h5>
-                    <p class="card-text">Программная инженерия</p>
+
+                        <h5 class="card-title">${group.code}</h5>
+                        <p class="card-text">${group.name}</p>
+
                 </div>
                 <div class="d-flex justify-content-between">
                     <form method="" action="">
                         <button class="btn btn-outline-primary ms-2" type="submit" name="" value="">Список
                             студентов</button>
                     </form>
-                    <form method="" action="">
-                        <button class="btn btn-outline-primary ms-2" type="submit" name=""
-                                value="">Изменить</button>
+                    <form method="get" action="/group/edit/${group.id}">
+                        <button class="btn btn-outline-primary ms-2" type="submit" name="" value="">Изменить</button>
                     </form>
-                    <form method="" action="">
-                        <button class="btn btn-outline-danger ms-2" type="submit" name="" value="">Удалить</button>
+                    <form method="post" action="/group/delete/${group.id}">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}">
+                        <button class="btn btn-outline-danger ms-2" type="submit" onclick="return confirm('Вы действительно хотите удалить данную группу?')">Удалить</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    </#list>
 </div>
 </body>
 

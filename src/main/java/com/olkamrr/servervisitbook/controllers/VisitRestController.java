@@ -1,6 +1,5 @@
 package com.olkamrr.servervisitbook.controllers;
 
-import com.olkamrr.servervisitbook.models.Group;
 import com.olkamrr.servervisitbook.models.Schedule;
 import com.olkamrr.servervisitbook.models.Student;
 import com.olkamrr.servervisitbook.models.Visit;
@@ -12,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/visit")
-public class VisitController {
+public class VisitRestController {
     private VisitService visitService;
     private StudentService studentService;
     private ScheduleService scheduleService;
 
     @Autowired
-    public  VisitController(VisitService visitService, StudentService studentService, ScheduleService scheduleService){
+    public VisitRestController(VisitService visitService, StudentService studentService, ScheduleService scheduleService){
         this.visitService = visitService;
         this.studentService = studentService;
         this.scheduleService = scheduleService;

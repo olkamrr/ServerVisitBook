@@ -20,7 +20,9 @@
         <div class="card-body">
             <h5 class="card-title">Группы</h5>
             <p class="card-text">Создание, изменение и удаление учебных групп. Добавление, изменение, удаление и перевод студентов</p>
-            <a href="#" class="btn btn-primary">Перейти</a>
+            <form action="/group/index" method="get">
+                <input type="submit" class="btn btn-primary" value="Перейти"/>
+            </form>
         </div>
     </div>
     <div class="card" style="width: 30rem;">

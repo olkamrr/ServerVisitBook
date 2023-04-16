@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/teacher")
-public class TeacherController {
+public class TeacherRestController {
     private TeacherService teacherService;
 
     @Autowired
-    public TeacherController(TeacherService teacherService){
+    public TeacherRestController(TeacherService teacherService){
         this.teacherService = teacherService;
     }
 

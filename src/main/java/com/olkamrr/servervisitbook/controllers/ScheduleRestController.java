@@ -2,7 +2,6 @@ package com.olkamrr.servervisitbook.controllers;
 
 import com.olkamrr.servervisitbook.models.Group;
 import com.olkamrr.servervisitbook.models.Schedule;
-import com.olkamrr.servervisitbook.models.Student;
 import com.olkamrr.servervisitbook.services.GroupService;
 import com.olkamrr.servervisitbook.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/schedule")
-public class ScheduleController {
+public class ScheduleRestController {
     private ScheduleService scheduleService;
     private GroupService groupService;
 
     @Autowired
-    public ScheduleController(ScheduleService scheduleService, GroupService groupService){
+    public ScheduleRestController(ScheduleService scheduleService, GroupService groupService){
         this.scheduleService = scheduleService;
         this.groupService = groupService;
     }

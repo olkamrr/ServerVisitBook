@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/student")
-public class StudentController {
+public class StudentRestController {
     private StudentService studentService;
     private GroupService groupService;
 
     @Autowired
-    public StudentController(StudentService studentService, GroupService groupService){
+    public StudentRestController(StudentService studentService, GroupService groupService){
         this.studentService = studentService;
         this.groupService = groupService;
     }
