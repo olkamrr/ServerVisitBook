@@ -12,8 +12,10 @@
     <div class="card mt-3" style="width: 30rem;">
         <div class="card-body">
             <h5 class="card-title">Аккаунты</h5>
-            <p class="card-text">Создание и удаление учётных записей пользователей</p>
-            <a href="#" class="btn btn-primary">Перейти</a>
+            <p class="card-text">Создание, изменение и удаление учётных записей пользователей</p>
+            <form action="/user/index" method="get">
+                <input type="submit" class="btn btn-primary" value="Перейти"/>
+            </form>
         </div>
     </div>
     <div class="card" style="width: 30rem;">

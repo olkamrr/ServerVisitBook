@@ -1,12 +1,16 @@
 package com.olkamrr.servervisitbook.controllers;
 
+import com.olkamrr.servervisitbook.models.Group;
 import com.olkamrr.servervisitbook.models.User;
+import com.olkamrr.servervisitbook.models.enums.Role;
 import com.olkamrr.servervisitbook.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -36,9 +40,34 @@ public class UserController {
     public String createUser(User user, Model model) {
         if (!userService.createUser(user)) {
             model.addAttribute("errorMessage", "Пользователь " + user.getLogin() + " уже существует");
-            return "redirect:/login";
+            return "/registration";
         }
         userService.createUser(user);
-        return "redirect:/login";
+        return "redirect:/user/index";
+    }
+
+    @GetMapping("user/index")
+    public String index(Model model) {
+        model.addAttribute("users", userService.getAll());
+        return "user/index";
+    }
+
+    @GetMapping("/user/edit/{id}")
+    public String edit (@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", userService.findOne(id));
+        model.addAttribute("roles", Role.values());
+        return "user/edit";
+    }
+
+    @PostMapping("/user/edit/{id}")
+    public String update(@RequestParam("userId") User user, @RequestParam Map<String, String> form) {
+        userService.changeUserRoles(user, form);
+        return "redirect:/user/index";
+    }
+
+    @PostMapping("user/disable/{id}")
+    public String disable(@PathVariable("id") int id) {
+        userService.disable(id);
+        return "redirect:/user/index";
     }
 }

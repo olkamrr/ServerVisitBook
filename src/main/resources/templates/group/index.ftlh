@@ -13,26 +13,21 @@
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h3 class="card-title">Учебные группы</h3>
+                    <a href="/" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"><h3 class="card-title">Учебные группы</h3></a>
                 </div>
                 <div class="d-flex justify-content-between">
                     <a class="btn btn-primary ms-2" href="/group/create">Создать</a>
                 </div>
-
             </div>
-
         </div>
     </div>
     <#list groups as group>
     <div class="card mt-1">
         <div class="card-body">
             <div class="d-flex justify-content-between">
-
                 <div class="mx-5">
-
                         <h5 class="card-title">${group.code}</h5>
                         <p class="card-text">${group.name}</p>
-
                 </div>
                 <div class="d-flex justify-content-between">
                     <form method="" action="">
