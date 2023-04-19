@@ -13,6 +13,17 @@ public class Group {
     private String name;
     @Column(name = "codeGroup")
     private String code;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "idAccount")
+    public User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;
@@ -44,6 +55,7 @@ public class Group {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

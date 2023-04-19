@@ -17,7 +17,7 @@
                     <h3 class="card-title">Создать группу</h3>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <form method="get" action="/group/index">
+                    <form method="get" action="/user/student">
                         <button class="btn btn-primary ms-2" type="submit" name="" value="">Назад</button>
                     </form>
                 </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="card mt-1">
         <div class="card-body">
-            <form method="post" action="/group/create">
+            <form method="post" action="/group/create/${user}">
                 <div class="mb-3">
                     <label class="form-label">Код группы</label>
                     <input type="text" name="code" class="form-control" id="exampleInputEmail1">

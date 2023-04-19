@@ -14,10 +14,10 @@
 
             <div class="d-flex justify-content-between">
                 <div>
-                    <h3 class="card-title">Редактирование группы</h3>
+                    <h3 class="card-title">Редактирование преподавателя</h3>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <form method="get" action="/groups">
+                    <form method="get" action="/teacher/">
                         <button class="btn btn-primary ms-2" type="submit" name="" value="">Назад</button>
                     </form>
                 </div>
@@ -28,14 +28,18 @@
     </div>
     <div class="card mt-1">
         <div class="card-body">
-            <form method="post" action="/group/edit/${group.id}">
+            <form method="post" action="/teacher/edit/${teacher.id}">
                 <div class="mb-3">
-                    <label class="form-label">Код группы</label>
-                    <input type="text" name="code" value="${group.code}" class="form-control" id="exampleInputEmail1">
+                    <label class="form-label">Фамилия</label>
+                    <input type="text" name="lastName" value="${teacher.lastName}" class="form-control" id="exampleInputEmail1">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Направление</label>
-                    <input type="text" name="name" value="${group.name}" class="form-control" id="exampleInputPassword1">
+                    <label class="form-label">Имя</label>
+                    <input type="text" name="firstName" value="${teacher.firstName}" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Отчество</label>
+                    <input type="text" name="patronymic" value="${teacher.patronymic}" class="form-control" id="exampleInputPassword1">
                 </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
                 <input type="submit" class="btn btn-primary" value="Сохранить">

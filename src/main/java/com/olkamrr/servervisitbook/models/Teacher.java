@@ -10,6 +10,9 @@ public class Teacher {
     private String lastName;
     private String firstName;
     private String patronymic;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "idAccount")
+    public User user;
 
     public int getId() {
         return id;
@@ -43,6 +46,10 @@ public class Teacher {
         this.patronymic = patronymic;
     }
 
+    public User getUser() {
+        return user;
+    }
+
     @Override
     public String toString() {
         return "Teacher{" +
@@ -50,6 +57,11 @@ public class Teacher {
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", patronymic='" + patronymic + '\'' +
+                ", user=" + user +
                 '}';
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

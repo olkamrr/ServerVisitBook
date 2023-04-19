@@ -24,10 +24,10 @@
     </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/user/index">Все пользователи</a>
+            <a class="nav-link" href="/user/index">Все пользователи</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/user/admin">Администраторы</a>
+            <a class="nav-link active" aria-current="page" href="/user/admin">Администраторы</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/user/student">Студенты</a>

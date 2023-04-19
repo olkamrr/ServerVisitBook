@@ -39,6 +39,20 @@ public class UserService {
         return users;
     }
 
+    public List<User> getRole(Role roleNum){
+        List<User> users = new ArrayList<>();
+        Streamable.of(userRepository.findAll()).forEach(users::add);
+        List<User> res = new ArrayList<>();
+        for (User user: users) {
+            for (Role role: user.getRoles()){
+                if (role.equals(roleNum)){
+                    res.add(user);
+                }
+            }
+        }
+        return res;
+    }
+
     public void changeUserRoles(User user, Map<String, String> form) {
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)

@@ -12,7 +12,7 @@
     <div class="card mt-3" style="width: 30rem;">
         <div class="card-body">
             <h5 class="card-title">Аккаунты</h5>
-            <p class="card-text">Создание, изменение и удаление учётных записей пользователей</p>
+            <p class="card-text">Создание, изменение и удаление учётных записей пользователей. Создание учебных групп. Создание преподавателей.</p>
             <form action="/user/index" method="get">
                 <input type="submit" class="btn btn-primary" value="Перейти"/>
             </form>
@@ -21,8 +21,8 @@
     <div class="card" style="width: 30rem;">
         <div class="card-body">
             <h5 class="card-title">Группы</h5>
-            <p class="card-text">Создание, изменение и удаление учебных групп. Добавление, изменение, удаление и перевод студентов</p>
-            <form action="/group/index" method="get">
+            <p class="card-text">Изменение и удаление учебных групп. Добавление, изменение, удаление и перевод студентов</p>
+            <form action="/groups" method="get">
                 <input type="submit" class="btn btn-primary" value="Перейти"/>
             </form>
         </div>
@@ -30,8 +30,8 @@
     <div class="card" style="width: 30rem;">
         <div class="card-body">
             <h5 class="card-title">Преподаватели</h5>
-            <p class="card-text">Добавление, изменение, удаление преподавателей</p>
-            <a href="#" class="btn btn-primary">Перейти</a>
+            <p class="card-text">Изменение, удаление преподавателей</p>
+            <a href="/teacher/" class="btn btn-primary">Перейти</a>
         </div>
     </div>
 </div>

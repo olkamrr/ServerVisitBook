@@ -12,7 +12,7 @@ import java.util.List;
 public class TeacherRestController {
     private TeacherService teacherService;
 
-    @Autowired
+    /*@Autowired
     public TeacherRestController(TeacherService teacherService){
         this.teacherService = teacherService;
     }
@@ -30,5 +30,5 @@ public class TeacherRestController {
     @PostMapping("/update/{id}")
     public Teacher update(@PathVariable(value = "id") int id, @RequestBody Teacher teacher){
         return teacherService.update(id, teacher);
-    }
+    }*/
 }

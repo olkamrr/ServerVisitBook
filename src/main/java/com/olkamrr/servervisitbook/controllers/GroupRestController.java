@@ -12,7 +12,7 @@ import java.util.List;
 public class GroupRestController {
     private GroupService groupService;
 
-    @Autowired
+    /*@Autowired
     public GroupRestController(GroupService groupService){
         this.groupService = groupService;
     }
@@ -30,7 +30,7 @@ public class GroupRestController {
     @PostMapping("/update/{id}")
     public Group update(@PathVariable(value = "id") int id, @RequestBody Group group){
         return groupService.update(id, group);
-    }
+    }*/
 
     @GetMapping("/delete/{id}")
     public Group delete(@PathVariable(value = "id") int id){

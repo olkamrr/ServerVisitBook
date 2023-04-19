@@ -24,7 +24,7 @@
     </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/user/index">Все пользователи</a>
+            <a class="nav-link" href="/user/index">Все пользователи</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/user/admin">Администраторы</a>
@@ -33,7 +33,7 @@
             <a class="nav-link" href="/user/student">Студенты</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/user/teacher">Преподаватели</a>
+            <a class="nav-link active" aria-current="page" href="/user/teacher">Преподаватели</a>
         </li>
     </ul>
     <#list users as user>
@@ -45,6 +45,15 @@
                         <p class="card-text"><#list user.roles as role>${role}<br></#list></p>
                     </div>
                     <div class="d-flex justify-content-between">
+                        <#if user.teacher??>
+                            <form>
+                                <button type="button" class="btn btn-outline-primary" disabled>Преподаватель создан</button>
+                            </form>
+                        <#else>
+                            <form method="get" action="/teacher/create/${user.id}">
+                                <button class="btn btn-outline-primary ms-2" type="submit" name="" value="">Создать преподавателя</button>
+                            </form>
+                        </#if>
                         <form method="get" action="/user/edit/${user.id}">
                             <button class="btn btn-outline-primary ms-2" type="submit" name="" value="">Изменить роль</button>
                         </form>

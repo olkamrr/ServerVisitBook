@@ -52,6 +52,24 @@ public class UserController {
         return "user/index";
     }
 
+    @GetMapping("user/admin")
+    public String admin(Model model) {
+        model.addAttribute("users", userService.getRole(Role.ROLE_ADMIN));
+        return "user/admin";
+    }
+
+    @GetMapping("user/student")
+    public String student(Model model) {
+        model.addAttribute("users", userService.getRole(Role.ROLE_STUDENT));
+        return "user/student";
+    }
+
+    @GetMapping("user/teacher")
+    public String teacher(Model model) {
+        model.addAttribute("users", userService.getRole(Role.ROLE_TEACHER));
+        return "user/teacher";
+    }
+
     @GetMapping("/user/edit/{id}")
     public String edit (@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.findOne(id));

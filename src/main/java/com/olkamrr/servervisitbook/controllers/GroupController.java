@@ -1,7 +1,9 @@
 package com.olkamrr.servervisitbook.controllers;
 
 import com.olkamrr.servervisitbook.models.Group;
+import com.olkamrr.servervisitbook.models.User;
 import com.olkamrr.servervisitbook.services.GroupService;
+import com.olkamrr.servervisitbook.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/group")
 public class GroupController {
     private GroupService groupService;
 
@@ -18,38 +19,40 @@ public class GroupController {
         this.groupService = groupService;
     }
 
-    @GetMapping("/index")
+    @GetMapping("/groups")
     public String index(Model model) {
         model.addAttribute("groups", groupService.getAll());
         return "group/index";
     }
 
-    @GetMapping("/create")
-    public String createGroup(@ModelAttribute("group") Group group) {
+    @GetMapping("/group/create/{id}")
+    public String create(@ModelAttribute("group") Group group, @PathVariable("id") int id, Model model) {
+        model.addAttribute("user", id);
         return "group/create";
     }
 
-    @PostMapping("/create")
-    public String create(@ModelAttribute("group") Group group) {
-        groupService.save(group);
-        return "redirect:/group/index";
+    @PostMapping("/group/create/{id}")
+    public String save(@ModelAttribute("group") Group group, @PathVariable("id") int id) {
+        groupService.save(group, id);
+        return "redirect:/user/student";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/group/edit/{id}")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("group", groupService.findOne(id));
         return "group/edit";
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("/group/edit/{id}")
     public String update(@ModelAttribute("group") Group group, @PathVariable("id") int id) {
-        groupService.update(id, group);
-        return "redirect:/group/index";
+        User user = groupService.findUser(id);
+        groupService.update(id, group, user);
+        return "redirect:/groups";
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/group/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         groupService.delete(id);
-        return "redirect:/group/index";
+        return "redirect:/groups";
     }
 }
