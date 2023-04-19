@@ -27,7 +27,7 @@
                         <p class="card-text">${group.name}</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <form method="" action="">
+                        <form method="get" action="/student/${group.id}">
                             <button class="btn btn-outline-primary ms-2" type="submit" name="" value="">Список
                                 студентов</button>
                         </form>

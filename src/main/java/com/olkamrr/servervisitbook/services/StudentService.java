@@ -2,10 +2,13 @@ package com.olkamrr.servervisitbook.services;
 
 import com.olkamrr.servervisitbook.models.Group;
 import com.olkamrr.servervisitbook.models.Student;
+import com.olkamrr.servervisitbook.models.Teacher;
 import com.olkamrr.servervisitbook.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -53,7 +56,9 @@ public class StudentService {
     }
 
     public List<Student> studentByGroupOrderByLastNameAsc(int groupId){
-        List<Student> students = studentRepository.findStudentsByGroupIdOrderByLastNameAsc(groupService.findOne(groupId));
+        //List<Student> students = studentRepository.findStudentsByGroupIdOrderByLastNameAsc(groupService.findOne(groupId));
+        List<Student> students = new ArrayList<>();
+        Streamable.of(studentRepository.findStudentsByGroupIdOrderByLastNameAsc(groupService.findOne(groupId))).forEach(students::add);
         return students;
     }
 }

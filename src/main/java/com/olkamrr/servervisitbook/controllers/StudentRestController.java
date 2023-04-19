@@ -37,11 +37,11 @@ public class StudentRestController {
         return studentService.delete(id);
     }
 
-    @GetMapping("/{groupId}")
+    /*@GetMapping("/{groupId}")
     public List<Student> studentByGroup(@PathVariable(value = "groupId") int groupId){
         List<Student> students = studentService.studentByGroupOrderByLastNameAsc(groupId);
         return students;
-    }
+    }*/
 
     @GetMapping("/transfer/{id}/{groupId}")
     public Student updateGroup(@PathVariable(value = "id") int id, @PathVariable(value = "groupId") int groupId){
