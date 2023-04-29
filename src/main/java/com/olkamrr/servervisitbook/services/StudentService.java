@@ -44,8 +44,8 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public Student updateGroup(int studentId, Student student, Group group){
-        student.setId(studentId);
+    public Student updateGroup(int studentId, Group group){
+        Student student = studentRepository.findById(studentId);
         student.setGroupId(group);
         return studentRepository.save(student);
     }

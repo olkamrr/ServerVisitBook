@@ -43,10 +43,10 @@ public class StudentRestController {
         return students;
     }*/
 
-    @GetMapping("/transfer/{id}/{groupId}")
+    /*@GetMapping("/transfer/{id}/{groupId}")
     public Student updateGroup(@PathVariable(value = "id") int id, @PathVariable(value = "groupId") int groupId){
         Group group = groupService.findOne(groupId);
         Student student = studentService.findOne(id);
         return studentService.updateGroup(id, student, group);
-    }
+    }*/
 }

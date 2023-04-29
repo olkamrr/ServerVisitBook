@@ -42,15 +42,20 @@
                 <tbody>
                 <#list students as student>
                 <tr>
-
                     <th scope="row">${student_index + 1}</th>
-                    <td>${student.lastName}</td>
-                    <td>${student.firstName}</td>
-                    <td>${student.patronymic}</td>
-                    <td><form>
+                    <#if student.elder == true ??>
+                        <td style="color: mediumseagreen">${student.lastName}</td>
+                        <td style="color: mediumseagreen">${student.firstName}</td>
+                        <td style="color: mediumseagreen">${student.patronymic}</td>
+                    <#else>
+                        <td>${student.lastName}</td>
+                        <td>${student.firstName}</td>
+                        <td>${student.patronymic}</td>
+                    </#if>
+                    <td><form action="/student/edit/${student.id}">
                             <input type="submit" class="btn btn-outline-primary" value="Изменить">
                         </form></td>
-                    <td><form>
+                    <td><form action="/student/transfer/${student.id}">
                             <input type="submit" class="btn btn-outline-primary" value="Перевести">
                         </form></td>
                     <td><form>
