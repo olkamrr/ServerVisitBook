@@ -30,6 +30,13 @@ public class StudentController {
         return "student/index";
     }
 
+    @GetMapping("/visits/{groupId}")
+    public String studentsVisits(Model model, @PathVariable("groupId") int groupId) {
+        List<Student> students = studentService.studentByGroupOrderByLastNameAsc(groupId);
+        model.addAttribute("students", students);
+        return "visit/students";
+    }
+
     @GetMapping("/create/{groupId}")
     public String create(@ModelAttribute("student") Student student, @PathVariable("groupId") int groupId, Model model) {
         model.addAttribute("group", groupId);

@@ -34,6 +34,13 @@
             <a href="/teacher/" class="btn btn-primary">Перейти</a>
         </div>
     </div>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+            <h5 class="card-title">Посещения</h5>
+            <p class="card-text">Просмотр посещений студентов и составление отчётов</p>
+            <a href="/visits/groups" class="btn btn-primary">Перейти</a>
+        </div>
+    </div>
 </div>
 
 </body>

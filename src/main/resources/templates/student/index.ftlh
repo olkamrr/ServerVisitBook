@@ -63,7 +63,11 @@
                         </form></td>
                 </tr>
                 <#else>
-                    <br><h3 style="text-align: center">Студентов нет</h3>
+                    <tr><td colspan="7">
+                            <br><h3 style="text-align: center">Студентов нет</h3>
+                        </td>
+                    </tr>
+
                 </#list>
                 </tbody>
             </table>

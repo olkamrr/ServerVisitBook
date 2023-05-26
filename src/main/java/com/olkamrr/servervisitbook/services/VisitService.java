@@ -8,6 +8,9 @@ import com.olkamrr.servervisitbook.repositories.VisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class VisitService {
     private VisitRepository visitRepository;
@@ -44,6 +47,15 @@ public class VisitService {
         visit.setLessonId(lesson);
         visit.setStudentId(student);
         return visitRepository.save(visit);
+    }
+
+    public List<Visit> visitsByLessons(String name, int semester, Group group) {
+        List<Schedule> lessons = scheduleService.findSchedulesByNameAndSemesterAndGroup(name, semester, group);
+        List<Visit> visitList = new ArrayList<>();
+        for (Schedule schedule: lessons) {
+            visitList.addAll(visitRepository.findVisitsByLessonIdAndConfirmationIsTrue(schedule));
+        }
+        return visitList;
     }
 
 }

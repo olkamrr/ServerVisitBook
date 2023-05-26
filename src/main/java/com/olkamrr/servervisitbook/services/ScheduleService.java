@@ -59,4 +59,12 @@ public class ScheduleService {
         List<Schedule> lesson = scheduleRepository.findSchedulesByGroupIdAndSemester(groupService.findOne(groupId), semester);
         return lesson;
     }
+
+    public List<Schedule> findLessons (int groupId) {
+        return scheduleRepository.findLessons(groupService.findOne(groupId));
+    }
+
+    public List<Schedule> findSchedulesByNameAndSemesterAndGroup(String name, int semester, Group group) {
+        return scheduleRepository.findSchedulesByNameAndSemesterAndGroupId(name, semester, group);
+    }
 }

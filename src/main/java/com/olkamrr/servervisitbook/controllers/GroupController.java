@@ -25,6 +25,12 @@ public class GroupController {
         return "group/index";
     }
 
+    @GetMapping("/visits/groups")
+    public String indexVisit(Model model) {
+        model.addAttribute("groups", groupService.getAll());
+        return "visit/index";
+    }
+
     @GetMapping("/group/create/{id}")
     public String create(@ModelAttribute("group") Group group, @PathVariable("id") int id, Model model) {
         model.addAttribute("user", id);
