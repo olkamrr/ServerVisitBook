@@ -4,9 +4,14 @@ public class Report {
     int count;
     Student student;
     String lesson;
+    String teacher;
+    int semester;
     int n;
     int nb;
     int be;
+    double percentN;
+    double percentNb;
+    double percentBe;
 
     public int getCount() {
         return count;
@@ -32,6 +37,22 @@ public class Report {
         this.lesson = lesson;
     }
 
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
+
     public int getN() {
         return n;
     }
@@ -54,5 +75,29 @@ public class Report {
 
     public void setBe(int be) {
         this.be = be;
+    }
+
+    public double getPercentN() {
+        return percentN;
+    }
+
+    public void setPercentN(double percentN) {
+        this.percentN = percentN;
+    }
+
+    public double getPercentNb() {
+        return percentNb;
+    }
+
+    public void setPercentNb(double percentNb) {
+        this.percentNb = percentNb;
+    }
+
+    public double getPercentBe() {
+        return percentBe;
+    }
+
+    public void setPercentBe(double percentBe) {
+        this.percentBe = percentBe;
     }
 }

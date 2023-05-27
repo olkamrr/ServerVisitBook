@@ -13,15 +13,14 @@
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <div>
-                    <a href="/visit/${name}/${semester}/${groupId}"
+                    <a href="/student/visits/${student.groupId.id}"
                        class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                         <h3 class="card-title">Отчёт</h3>
                     </a>
                 </div>
                 <div>
-                    <h6>${visit.lessonId.name}</h6>
-                    <h6>${visit.lessonId.teacher.lastName} ${visit.lessonId.teacher.firstName} ${visit.lessonId.teacher.patronymic}</h6>
-                    <h6>группа: ${visit.lessonId.groupId.code}</h6>
+                    <h6>${student.lastName} ${student.firstName} ${student.patronymic}</h6>
+                    <h6>группа: ${student.groupId.code}</h6>
                 </div>
             </div>
         </div>
@@ -31,24 +30,24 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Фамилия</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Отчество</th>
-                <th scope="col">Количество пропусков</th>
-                <th scope="col" class="text-center">%</th>
-                <th scope="col">Количество пропусков по уважительной причине</th>
-                <th scope="col" class="text-center">%</th>
-                <th scope="col">Количество посещений</th>
-                <th scope="col" class="text-center">%</th>
-                <th scope="col">Общее количество пар</th>
+                <th scope="col" class="align-middle" class="text-center">Название</th>
+                <th scope="col" class="align-middle" class="text-center">Семестр</th>
+                <th scope="col" class="align-middle" class="text-center">Преподаватель</th>
+                <th scope="col" class="align-middle" class="text-center">Количество пропусков</th>
+                <th scope="col" class="align-middle" class="text-center">%</th>
+                <th scope="col" class="align-middle" class="text-center">Количество пропусков по уважительной причине</th>
+                <th scope="col" class="align-middle" class="text-center">%</th>
+                <th scope="col" class="align-middle" class="text-center">Количество посещений</th>
+                <th scope="col" class="align-middle" class="text-center">%</th>
+                <th scope="col" class="align-middle" class="text-center">Общее количество пар</th>
             </tr>
             </thead>
             <tbody>
             <#list reports as report>
                 <tr>
-                    <td>${report.student.lastName}</td>
-                    <td>${report.student.firstName}</td>
-                    <td>${report.student.patronymic}</td>
+                    <td>${report.lesson}</td>
+                    <td class="text-center">${report.semester}</td>
+                    <td>${report.teacher}</td>
                     <td class="text-center">${report.n}</td>
                     <td class="text-center">${report.percentN} %</td>
                     <td class="text-center">${report.nb}</td>

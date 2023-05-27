@@ -58,4 +58,7 @@ public class VisitService {
         return visitList;
     }
 
+    public List<Visit> visitsByStudent(Student student) {
+        return visitRepository.findVisitsByStudentIdAndConfirmationIsTrue(student);
+    }
 }

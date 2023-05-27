@@ -1,5 +1,6 @@
 package com.olkamrr.servervisitbook.controllers;
 
+import com.olkamrr.servervisitbook.models.Group;
 import com.olkamrr.servervisitbook.services.GroupService;
 import com.olkamrr.servervisitbook.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,8 @@ public class ScheduleController {
 
     @GetMapping("/{groupId}")
     public String lessons(Model model, @PathVariable(value = "groupId") int groupId){
-        model.addAttribute("lessons", scheduleService.findLessons(groupId));
+        Group group = groupService.findOne(groupId);
+        model.addAttribute("lessons", scheduleService.findLessons(group));
         return "visit/lessons";
     }
 }

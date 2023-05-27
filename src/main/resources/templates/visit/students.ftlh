@@ -46,7 +46,7 @@
                         <td>${student.firstName}</td>
                         <td>${student.patronymic}</td>
                     </#if>
-                    <td><form action="">
+                    <td><form action="/visit/report/${student.id}">
                             <input type="submit" class="btn btn-outline-primary" value="Посещения">
                         </form></td>
                 </tr>

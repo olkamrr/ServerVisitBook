@@ -1,9 +1,6 @@
 package com.olkamrr.servervisitbook.controllers;
 
-import com.olkamrr.servervisitbook.models.Group;
-import com.olkamrr.servervisitbook.models.Report;
-import com.olkamrr.servervisitbook.models.Student;
-import com.olkamrr.servervisitbook.models.Visit;
+import com.olkamrr.servervisitbook.models.*;
 import com.olkamrr.servervisitbook.services.GroupService;
 import com.olkamrr.servervisitbook.services.ScheduleService;
 import com.olkamrr.servervisitbook.services.StudentService;
@@ -49,6 +46,7 @@ public class VisitController {
         List<Visit> visits = visitService.visitsByLessons(name, semester, group);
         List<Student> students = studentService.studentByGroupOrderByLastNameAsc(groupId);
         List<Report> reportList = new ArrayList<>();
+        Visit visitReport = new Visit();
         for (Student student: students) {
             Report report = new Report();
             report.setStudent(student);
@@ -60,14 +58,72 @@ public class VisitController {
                 if (student.getId() == visit.getStudentId().getId()) {
                     report.setLesson(visit.getLessonId().getName());
                     report.setCount(report.getCount() + 1);
+                    visitReport = visit;
                     if (visit.getStatus().equals("Н")) report.setN(report.getN() + 1);
                     if (visit.getStatus().equals("НБ")) report.setNb(report.getNb() + 1);
                     if (visit.getStatus().equals("П")) report.setBe(report.getBe() + 1);
                 }
             }
+            int n = report.getN();
+            int nb = report.getNb();
+            int be = report.getBe();
+            double count = report.getCount();
+            double percentN = n / count * 100;
+            double percentNb = nb / count * 100;
+            double percentBe = be / count * 100;
+            report.setPercentN(percentN);
+            report.setPercentNb(percentNb);
+            report.setPercentBe(percentBe);
             reportList.add(report);
         }
         model.addAttribute("reports", reportList);
+        model.addAttribute("visit", visitReport);
         return "visit/report_by_lessons";
+    }
+
+    @GetMapping("/report/{studentId}")
+    public String reportStudent(Model model, @PathVariable(value = "studentId") int studentId) {
+        Student student = studentService.findOne(studentId);
+        List<Visit> visitList = visitService.visitsByStudent(student);
+        Group group = studentService.findGroup(studentId);
+        List<Schedule> schedules = scheduleService.findLessons(group);
+        List<Report> reportList = new ArrayList<>();
+        for (Schedule schedule: schedules) {
+            Report report = new Report();
+            report.setLesson(schedule.getName());
+            report.setSemester(schedule.getSemester());
+            report.setTeacher(schedule.getTeacher().getLastName());
+            report.setN(0);
+            report.setNb(0);
+            report.setBe(0);
+            report.setCount(0);
+            for (Visit visit: visitList) {
+                if (schedule.getName().equals(visit.getLessonId().getName()) && schedule.getSemester() == visit.getLessonId().getSemester()) {
+                    report.setCount(report.getCount() + 1);
+                    if (visit.getStatus().equals("Н")) report.setN(report.getN() + 1);
+                    if (visit.getStatus().equals("НБ")) report.setNb(report.getNb() + 1);
+                    if (visit.getStatus().equals("П")) report.setBe(report.getBe() + 1);
+                }
+            }
+            int n = report.getN();
+            int nb = report.getNb();
+            int be = report.getBe();
+            double count = report.getCount();
+            double percentBe = 0;
+            double percentN = 0;
+            double percentNb = 0;
+            if (count != 0) {
+                percentN = n / count * 100;
+                percentNb = nb / count * 100;
+                percentBe = be / count * 100;
+            }
+            report.setPercentN(percentN);
+            report.setPercentNb(percentNb);
+            report.setPercentBe(percentBe);
+            reportList.add(report);
+        }
+        model.addAttribute("reports", reportList);
+        model.addAttribute("student", student);
+        return "visit/report_by_student";
     }
 }

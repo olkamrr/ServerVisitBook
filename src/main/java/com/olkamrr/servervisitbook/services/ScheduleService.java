@@ -60,8 +60,8 @@ public class ScheduleService {
         return lesson;
     }
 
-    public List<Schedule> findLessons (int groupId) {
-        return scheduleRepository.findLessons(groupService.findOne(groupId));
+    public List<Schedule> findLessons (Group group) {
+        return scheduleRepository.findLessons(group);
     }
 
     public List<Schedule> findSchedulesByNameAndSemesterAndGroup(String name, int semester, Group group) {
